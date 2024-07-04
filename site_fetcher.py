@@ -73,6 +73,7 @@ def process_pnr(driver, data_dict, pnr_id):
                         data_dict[pnr_id]['downloads'] += 1
                         print_invoice_clicked = True
                         time.sleep(40)
+                        #//*[@id="sidebar"]//print-preview-button-strip//div/cr-button[1]
                         pyautogui.click(1508, 909)
                         time.sleep(10)
                         if data_dict[pnr_id]['downloads'] == 1:
@@ -81,13 +82,12 @@ def process_pnr(driver, data_dict, pnr_id):
                             file_name = f"{pnr_id}_{data_dict[pnr_id]['downloads'] - 1}"
 
                         pyautogui.typewrite(file_name, interval=0.1)
-                        time.sleep(10)
-
-                        pyautogui.click(702, 672)
+                        keyboard.press("Enter")
+                        
                         
                         print_invoice_clicked = False
-                        time.sleep(2) 
-                    
+                        time.sleep(5) 
+                        pyautogui.click(740 , 32)
                     file_path = os.path.join(r"C:\mimt", file_name + ".pdf")
                     if not os.path.exists(file_path):
                         data_dict[pnr_id]['status'] = f"Failed to download {file_name}.pdf"
