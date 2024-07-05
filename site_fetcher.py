@@ -72,16 +72,17 @@ def process_pnr(driver, data_dict, pnr_id):
                         download_button.click()
                         data_dict[pnr_id]['downloads'] += 1
                         print_invoice_clicked = True
-                        time.sleep(40)
+                        time.sleep(30)
                         #//*[@id="sidebar"]//print-preview-button-strip//div/cr-button[1]
                         pyautogui.click(1508, 909)
-                        time.sleep(10)
+                        time.sleep(5)
                         if data_dict[pnr_id]['downloads'] == 1:
                             file_name = pnr_id
                         else:
                             file_name = f"{pnr_id}_{data_dict[pnr_id]['downloads'] - 1}"
 
                         pyautogui.typewrite(file_name, interval=0.1)
+                        time.sleep(5)
                         keyboard.press("Enter")
                         
                         
